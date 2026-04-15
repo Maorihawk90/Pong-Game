@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pong</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="game-shell">
+      <header class="top-bar">
+        <h1 class="game-title">Pong</h1>
+        <div class="scoreboard" aria-label="Score">
+          <span id="player-score">0</span>
+          <span class="score-divider">:</span>
+          <span id="computer-score">0</span>
+        </div>
+      </header>
+
+      <div class="board-wrap">
+        <canvas
+          id="game-canvas"
+          width="960"
+          height="540"
+          aria-label="Pong game area"
+        ></canvas>
+
+        <div id="start-screen" class="overlay">
+          <div class="panel">
+            <h2>Pong</h2>
+            <p>Use <strong>Up</strong> and <strong>Down</strong> on desktop, or drag on the left side of the screen on mobile.</p>
+            <button id="start-button" class="button">Start Game</button>
+          </div>
+        </div>
+
+        <div id="game-over-screen" class="overlay hidden">
+          <div class="panel">
+            <h2>Game Over</h2>
+            <p id="winner-text">Player wins!</p>
+            <button id="play-again-button" class="button">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
