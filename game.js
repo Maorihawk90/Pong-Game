@@ -19,8 +19,8 @@ const paddle = {
 
 const ballSettings = {
   radius: 10,
-  speed: 340,
-  speedIncrease: 18
+  speed: 520,
+  speedIncrease: 28
 };
 
 const game = {
