@@ -19,8 +19,8 @@ const paddle = {
 
 const ballSettings = {
   radius: 10,
-  speed: 520,
-  speedIncrease: 28
+  speed: 700,
+  speedIncrease: 40
 };
 
 const game = {
@@ -210,14 +210,20 @@ function updatePlayer(deltaTime) {
 
 function updateComputer(deltaTime) {
   const computerCenter = game.computer.y + game.computer.height / 2;
-  const timeUntilBallArrives = (game.computer.x - game.ball.x) / Math.max(1, game.ball.velocityX);
-  let targetY = game.ball.y + game.ball.velocityY * Math.max(0, timeUntilBallArrives);
+  let targetY = canvas.height / 2;
 
-  while (targetY < 0 || targetY > canvas.height) {
-    if (targetY < 0) {
-      targetY = -targetY;
-    } else if (targetY > canvas.height) {
-      targetY = canvas.height * 2 - targetY;
+  // Only predict a landing point when the ball is traveling toward the computer.
+  // This avoids the paddle snapping wildly right after it returns the ball.
+  if (game.ball.velocityX > 0) {
+    const timeUntilBallArrives = (game.computer.x - game.ball.x) / game.ball.velocityX;
+    targetY = game.ball.y + game.ball.velocityY * Math.max(0, timeUntilBallArrives);
+
+    while (targetY < 0 || targetY > canvas.height) {
+      if (targetY < 0) {
+        targetY = -targetY;
+      } else if (targetY > canvas.height) {
+        targetY = canvas.height * 2 - targetY;
+      }
     }
   }
 
