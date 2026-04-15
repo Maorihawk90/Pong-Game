@@ -1,0 +1,161 @@
+:root {
+  --bg: #0f172a;
+  --panel: rgba(15, 23, 42, 0.82);
+  --surface: #111827;
+  --line: #e5e7eb;
+  --text: #f8fafc;
+  --muted: #cbd5e1;
+  --accent: #22c55e;
+  --button-text: #052e16;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  background:
+    radial-gradient(circle at top, #1e293b, #0f172a 55%),
+    linear-gradient(180deg, #0f172a, #020617);
+  color: var(--text);
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.game-shell {
+  width: min(100%, 1040px);
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.game-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border: 2px solid rgba(229, 231, 235, 0.2);
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.75);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+}
+
+.score-divider {
+  color: var(--muted);
+}
+
+.board-wrap {
+  position: relative;
+  border: 3px solid rgba(229, 231, 235, 0.22);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  touch-action: none;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(2, 6, 23, 0.7);
+}
+
+.hidden {
+  display: none;
+}
+
+.panel {
+  width: min(100%, 360px);
+  padding: 28px;
+  border: 2px solid rgba(229, 231, 235, 0.18);
+  border-radius: 18px;
+  background: var(--panel);
+  text-align: center;
+}
+
+.panel h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 2rem;
+}
+
+.panel p {
+  margin-bottom: 20px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.button {
+  border: none;
+  border-radius: 999px;
+  padding: 12px 22px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--button-text);
+  background: var(--accent);
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.button:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .top-bar {
+    flex-direction: column;
+  }
+
+  .page {
+    padding: 12px;
+  }
+
+  .panel {
+    padding: 22px;
+  }
+
+  .panel h2 {
+    font-size: 1.7rem;
+  }
+
+  .panel p {
+    font-size: 0.95rem;
+  }
+}
